@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { veritaso_backend } from 'declarations/veritaso_backend';
+import { useState } from 'react';
 
 function App() {
   const [greeting, setGreeting] = useState('');
