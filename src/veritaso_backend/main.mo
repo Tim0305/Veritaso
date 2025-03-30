@@ -2,7 +2,7 @@ import HashMap "mo:base/HashMap";
 import Text "mo:base/Text";
 import Nat "mo:base/Nat";
 import Debug "mo:base/Debug";
-import Iter "mo:base/Iter";
+import Array "mo:base/Array";
 import Types "Types";
 
 actor {
@@ -20,26 +20,26 @@ actor {
 
   // 5. Crear un artículo
   public func createArticulo(
-    title: Text,
-    summary: Text,
-    text: Text,
-    date: Text,
-    image: Text
+    titulo: Text,
+    resumen: Text,
+    texto: Text,
+    fechaCreacion: Text,
   ) : async Text {
+
+    let id = generateArticuloId();
     let newArticulo: Types.Articulo = {
-      title; 
-      summary; 
-      text; 
-      date; 
-      image;
+      id;
+      titulo; 
+      resumen; 
+      texto; 
+      fechaCreacion; 
     };
 
     //Debug.print(generateFechaActual());
 
-    let key = generateArticuloId();
-    articulos.put(key, newArticulo);
+    articulos.put(id, newArticulo);
 
-    return key; // Retornamos el ID para referencia
+    return id; // Retornamos el ID para referencia
   };
 
   // 6. Obtener un artículo por ID (clave)
@@ -48,35 +48,36 @@ actor {
   };
 
   // 7. Obtener todos los artículos
-  public query func getArticulos(): async [(Text, Types.Articulo)] {
-    let articulosIter: Iter.Iter<(Text, Types.Articulo)> = articulos.entries();
-    return Iter.toArray(articulosIter);
+  public query func getArticulos(): async [Types.Articulo] {
+    var articulosArray : [Types.Articulo] = [];
+    for (articulo in articulos.vals())
+      articulosArray := Array.append(articulosArray, [articulo]);
+    return articulosArray;
   };
 
   // 8. Actualizar un artículo (versión completa: sobrescribe todos los campos)
   public func updateArticulo(
-    key: Text,
-    title: Text,
-    summary: Text,
-    text: Text,
-    date: Text,
-    image: Text
+    id: Text,
+    titulo: Text,
+    resumen: Text,
+    texto: Text,
+    fechaCreacion: Text,
   ) : async Bool {
-    switch (articulos.get(key)) {
+    switch (articulos.get(id)) {
       case null {
-        Debug.print("No se encontró el artículo con ID: " # key);
+        Debug.print("No se encontró el artículo con ID: " # id);
         return false;
       };
       case (?_) {
         let updatedArticulo: Types.Articulo = {
-          title; 
-          summary; 
-          text; 
-          date; 
-          image;
+          id;
+          titulo; 
+          resumen; 
+          texto; 
+          fechaCreacion; 
         };
-        articulos.put(key, updatedArticulo);
-        Debug.print("Artículo actualizado con ID: " # key);
+        articulos.put(id, updatedArticulo);
+        Debug.print("Artículo actualizado con ID: " # id);
         return true;
       };
     };

@@ -16,14 +16,14 @@
   margin-bottom: 3%;
 }
 
-.nombreArticulo {
+.tituloArticulo {
   color: #2115b8;
   font-size: 1.2vw;
   text-decoration: none;
   cursor: pointer;
 }
 
-.nombreArticulo:hover {
+.tituloArticulo:hover {
   text-decoration: underline;
 }
 

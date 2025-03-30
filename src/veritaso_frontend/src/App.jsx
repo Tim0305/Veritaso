@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar/NavBar";
 import SearchResults from "./pages/SearchResults/SearchResults";
 import Articulo from "./pages/Articulo/Articulo";
 import NotFound from "./pages/NotFound/NotFound";
+import ModificarArticulo from "./pages/ModificarArticulo/ModificarArticulo";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<Buscador />} />
             <Route path="/resultados" element={<SearchResults />} />
             <Route path="/articulo" element={<Articulo />} />
+            <Route path="/modificarArticulo" element={<ModificarArticulo />} />
             {/* Redirige a Home si la ruta no existe */}
             <Route path="*" element={<NotFound />} />
           </Routes>
