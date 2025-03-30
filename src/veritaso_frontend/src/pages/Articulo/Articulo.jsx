@@ -1,5 +1,6 @@
+import { useState } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import styled from "styled-components";
 
 // Obtener los articulos que coincidan con las busquedas
 const articulos = [
@@ -28,27 +29,25 @@ function Articulo() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const idArticulo = queryParams.get("id");
+  const [loading, setLoading] = useState(true);
+  const [articulo, setArticulo] = useState(null);
 
   // Obtener el articulo por ID
-  const articulo = articulos.find((a) => a.id == idArticulo);
+  useEffect(() => {
+    veritaso_backend.getArticulo(idArticulo).then((response) => {
+      // Obtener el primer articulo
+      setArticulo(response[0]);
+      setLoading(false);
+    });
+  }, []);
 
   return articulo ? (
-    <Container>
-      <div className="pagina">
-        <div className="title">
-          <h2>{articulo.nombre}</h2>
-        </div>
-        <br/>
-        <div className="resumen">
-          <span>{articulo.resumen}</span>
-        </div>
-        <br />
-        <div className="text">
-          <span>{articulo.texto}</span>
-        </div>
-      </div>
-
-    </Container>
+    <div>
+      <h1>{articulo.nombre}</h1>
+      <p>{articulo.resumen}</p>
+      <hr />
+      <p>{articulo.texto}</p>
+    </div>
   ) : (
     <p>Error, no se pudo encontrar el articulo</p>
   );

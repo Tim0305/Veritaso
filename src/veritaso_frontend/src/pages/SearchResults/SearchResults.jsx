@@ -2,28 +2,7 @@ import { veritaso_backend } from "declarations/veritaso_backend";
 import { useLocation, useNavigate } from "react-router-dom";
 import NotFound from "../NotFound/NotFound";
 import styles from "./SearchResult.module.css";
-
-// Obtener los articulos que coincidan con las busquedas
-const articulos = [
-  {
-    id: 0,
-    nombre: "Articulo 1",
-    resumen: "Este es el articulo 1",
-    texto: "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
-  },
-  {
-    id: 1,
-    nombre: "Articulo 2",
-    resumen: "Este es el articulo 2",
-    texto: "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
-  },
-  {
-    id: 2,
-    nombre: "Articulo 3",
-    resumen: "Este es el articulo 3",
-    texto: "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
-  },
-];
+import { useEffect, useState } from "react";
 
 function SearchResults() {
   // Obtener la busqueda del usuario enviada mediante la URL
@@ -32,15 +11,24 @@ function SearchResults() {
   const search = queryParams.get("busqueda");
   const navigate = useNavigate();
 
-  const articulosFiltrados = articulos.filter((a) =>
-    a.nombre.toLowerCase().includes(search.toLowerCase()),
-  );
+  const [articulos, setArticulos] = useState([]);
+
+  const articulosFiltrados = articulos.filter((a) => {
+    return a.titulo.toLowerCase().includes(search.toLowerCase());
+  });
 
   const handleClickArticulo = (id) => {
     navigate(`/articulo?id=${encodeURIComponent(id)}`);
   };
 
-  veritaso_backend.getArticulos().then((art) => console.log(art));
+  const handleClickModificarArticulo = (id) => {
+    navigate(`/modificarArticulo?id=${encodeURIComponent(id)}`);
+  };
+
+  useEffect(() => {
+    // Obtener la lista de articulos
+    veritaso_backend.getArticulos().then((response) => setArticulos(response));
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -53,13 +41,12 @@ function SearchResults() {
             {articulosFiltrados.map((a) => (
               <li key={a.id} className={styles.listItem}>
                 <a
-                  className={styles.nombreArticulo}
+                  className={styles.tituloArticulo}
                   onClick={() => handleClickArticulo(a.id)}
                 >
-                  <b>{a.nombre}</b>
+                  <b>{a.titulo}</b>
                 </a>
                 <p className={styles.resumenArticulo}>{a.resumen}</p>
-                <p>{a.texto}</p>
               </li>
             ))}
           </ul>

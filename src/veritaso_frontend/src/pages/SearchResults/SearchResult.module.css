@@ -30,7 +30,7 @@
   width: 100%;
 }
 
-.nombreArticulo {
+.tituloArticulo {
   color: #2115b8;
   font-size: 1.2vw;
   font-weight: bold;
@@ -39,7 +39,7 @@
   transition: color 0.3s ease-in-out;
 }
 
-.nombreArticulo:hover {
+.tituloArticulo:hover {
   text-decoration: underline;
   color: #1510a0;
 }
