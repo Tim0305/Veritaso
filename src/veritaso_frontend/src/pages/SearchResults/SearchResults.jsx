@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import { veritaso_backend } from "declarations/veritaso_backend";
 import styles from "./SearchResult.module.css";
 
 // Obtener los articulos que coincidan con las busquedas
@@ -37,6 +38,8 @@ function SearchResults() {
   const handleClickArticulo = (id) => {
     navigate(`/articulo?id=${encodeURIComponent(id)}`);
   };
+
+  veritaso_backend.getArticulos().then((art) => console.log(art));
 
   return (
     <div className={styles.container}>
