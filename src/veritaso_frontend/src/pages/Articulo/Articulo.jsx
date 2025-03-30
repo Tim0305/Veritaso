@@ -4,9 +4,6 @@ import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Navbar from "../../components/NavBar/NavBar";
 
-import { veritaso_backend } from "declarations/veritaso_backend";
-import styled from "styled-components";
-
 function Articulo() {
   // Obtener la  del usuario enviada mediante la URL
   const location = useLocation();
@@ -24,20 +21,15 @@ function Articulo() {
     });
   }, []);
 
-
   return articulo ? (
     <>
       <Navbar />
       <Container>
         <div className="pagina">
-          <h2>
-            {articulo.titulo}
-          </h2>
+          <h2>{articulo.titulo}</h2>
           <br />
           <div className="resumen">
-            <span>
-              {articulo.resumen}
-            </span>
+            <span>{articulo.resumen}</span>
           </div>
           <div className="texto">
             <span>{articulo.texto}</span>
@@ -70,7 +62,6 @@ const Container = styled.div`
     h2 {
       text-align: center;
     }
-
   }
 `;
 

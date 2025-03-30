@@ -6,13 +6,14 @@ import ModificarArticulo from "./pages/ModificarArticulo/ModificarArticulo";
 import NotFound from "./pages/NotFound/NotFound";
 import SearchResults from "./pages/SearchResults/SearchResults";
 import CrearArticulo from "./pages/CrearArticulo/CrearArticulo";
+import Navbar from "./components/NavBar/NavBar";
 
 function App() {
   return (
     <>
       <div>
         <Router>
-          <NavBar />
+          <Navbar />
           <Routes>
             <Route path="/" element={<Buscador />} />
             <Route path="/resultados" element={<SearchResults />} />
