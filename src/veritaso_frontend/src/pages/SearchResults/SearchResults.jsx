@@ -24,9 +24,23 @@ function SearchResults() {
     navigate(`/modificarArticulo?id=${encodeURIComponent(id)}`);
   };
 
-  useEffect(() => {
+  const handleDeleteArticulo = (id) => {
+    veritaso_backend.deleteArticulo(id).then((response) => {
+      if (response) {
+        alert("El articulo se elimino correctamente");
+        // Actuaizar la lista de articulos
+        cargarDatosDatabase();
+      } else alert("Hubo un error al eliminar el articulo");
+    });
+  };
+
+  const cargarDatosDatabase = () => {
     // Obtener la lista de articulos
     veritaso_backend.getArticulos().then((response) => setArticulos(response));
+  };
+
+  useEffect(() => {
+    cargarDatosDatabase();
   }, []);
 
   return (
@@ -48,6 +62,9 @@ function SearchResults() {
                 <p className={styles.resumenArticulo}>{a.resumen}</p>
                 <button onClick={() => handleClickModificarArticulo(a.id)}>
                   Modificar
+                </button>
+                <button onClick={() => handleDeleteArticulo(a.id)}>
+                  Eliminar
                 </button>
               </li>
             ))}
