@@ -1,5 +1,6 @@
-import { useLocation, useNavigate } from "react-router-dom";
 import { veritaso_backend } from "declarations/veritaso_backend";
+import { useLocation, useNavigate } from "react-router-dom";
+import NotFound from "../NotFound/NotFound";
 import styles from "./SearchResult.module.css";
 import { useEffect, useState } from "react";
 
@@ -45,10 +46,10 @@ function SearchResults() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.filtrosContainer}></div>
+      <span>{}</span>
       <div className={styles.resultadosContainer}>
         {articulosFiltrados.length === 0 ? (
-          <span>Sin resultados</span>
+          <NotFound />
         ) : (
           <ul>
             {articulosFiltrados.map((a) => (
