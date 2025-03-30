@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.filtrosContainer {
+  width: 20%;
+}
+
+.resultadosContainer {
+  width: 80%;
+}
+
+.listItem {
+  margin-bottom: 3%;
+}
+
+.nombreArticulo {
+  color: #2115b8;
+  font-size: 1.2vw;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nombreArticulo:hover {
+  text-decoration: underline;
+}
+
+.resumenArticulo {
+  font-size: 1vw;
+  margin: 0;
+  margin-top: 10px;
+}

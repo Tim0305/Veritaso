@@ -1,15 +1,28 @@
-import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Inicio from "./pages/Inicio/Inicio";
+import "./App.css";
+import Buscador from "./pages/Buscador/Buscador";
+import NavBar from "./components/NavBar/NavBar";
+import SearchResults from "./pages/SearchResults/SearchResults";
+import Articulo from "./pages/Articulo/Articulo";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Inicio />} />
-        <Route path="/inicio" element={<Inicio />} />
-      </Routes>
-    </Router>
+    <>
+      <NavBar />
+      <div>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Buscador />} />
+            <Route path="/resultados" element={<SearchResults />} />
+            <Route path="/articulo" element={<Articulo />} />
+            {/* Redirige a Home si la ruta no existe */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Router>
+      </div>
+    </>
   );
 }
+
 export default App;
