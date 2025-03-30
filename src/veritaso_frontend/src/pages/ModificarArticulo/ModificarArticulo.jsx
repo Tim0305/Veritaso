@@ -42,8 +42,8 @@ function ModificarArticulo() {
         articulo.fechaCreacion,
       )
       .then((resultado) => {
-        if (resultado) alert("El articulo se modifico correctamente");
-        else alert("Hubo un problema al modificar el articulo");
+        if (resultado) alert("El artículo se modificó correctamente");
+        else alert("Hubo un problema al modificar el artículo");
       });
   };
 

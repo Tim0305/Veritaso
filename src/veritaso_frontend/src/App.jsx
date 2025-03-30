@@ -5,17 +5,20 @@ import Buscador from "./pages/Buscador/Buscador";
 import ModificarArticulo from "./pages/ModificarArticulo/ModificarArticulo";
 import NotFound from "./pages/NotFound/NotFound";
 import SearchResults from "./pages/SearchResults/SearchResults";
+import CrearArticulo from "./pages/CrearArticulo/CrearArticulo";
 
 function App() {
   return (
     <>
       <div>
         <Router>
+          <NavBar />
           <Routes>
             <Route path="/" element={<Buscador />} />
             <Route path="/resultados" element={<SearchResults />} />
             <Route path="/articulo" element={<Articulo />} />
             <Route path="/modificarArticulo" element={<ModificarArticulo />} />
+            <Route path="/crearArticulo" element={<CrearArticulo />} />
             {/* Redirige a Home si la ruta no existe */}
             <Route path="*" element={<NotFound />} />
           </Routes>

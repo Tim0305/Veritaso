@@ -4,6 +4,8 @@ import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Navbar from "../../components/NavBar/NavBar";
 
+import { veritaso_backend } from "declarations/veritaso_backend";
+import styled from "styled-components";
 
 function Articulo() {
   // Obtener la  del usuario enviada mediante la URL
@@ -58,20 +60,18 @@ const Container = styled.div`
   min-height: 100vh;
   background: linear-gradient(135deg, #f5f5f5, #dcdcdc);
 
-  .pagina{
+  .pagina {
     width: 50%;
     height: 100vh;
     border-radius: 2px;
     background-color: #fff;
     padding: 80px;
 
-    h2{
+    h2 {
       text-align: center;
     }
 
   }
-
 `;
-
 
 export default Articulo;
