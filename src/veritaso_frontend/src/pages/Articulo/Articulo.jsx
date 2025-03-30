@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import styled from "styled-components";
 
 // Obtener los articulos que coincidan con las busquedas
 const articulos = [
@@ -32,15 +33,49 @@ function Articulo() {
   const articulo = articulos.find((a) => a.id == idArticulo);
 
   return articulo ? (
-    <div>
-      <h1>{articulo.nombre}</h1>
-      <p>{articulo.resumen}</p>
-      <hr />
-      <p>{articulo.texto}</p>
-    </div>
+    <Container>
+      <div className="pagina">
+        <div className="title">
+          <h2>{articulo.nombre}</h2>
+        </div>
+        <br/>
+        <div className="resumen">
+          <span>{articulo.resumen}</span>
+        </div>
+        <br />
+        <div className="text">
+          <span>{articulo.texto}</span>
+        </div>
+      </div>
+
+    </Container>
   ) : (
     <p>Error, no se pudo encontrar el articulo</p>
   );
 }
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center; /* Separa los filtros y los resultados */
+  align-items: flex-start; /* Alinea los elementos arriba */
+  padding: 20px;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f5f5, #dcdcdc);
+
+  .pagina{
+    width: 50%;
+    height: 100vh;
+    border-radius: 2px;
+    background-color: #fff;
+    padding: 80px;
+
+    h2{
+      text-align: center;
+    }
+  }
+
+`;
+
 
 export default Articulo;
