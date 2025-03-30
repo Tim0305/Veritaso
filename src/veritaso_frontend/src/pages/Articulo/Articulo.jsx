@@ -1,28 +1,9 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { veritaso_backend } from "declarations/veritaso_backend";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import styled from "styled-components";
+import Navbar from "../../components/NavBar/NavBar";
 
-// Obtener los articulos que coincidan con las busquedas
-const articulos = [
-  {
-    id: 0,
-    nombre: "Articulo 1",
-    resumen: "Este es el articulo 1",
-    texto: "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
-  },
-  {
-    id: 1,
-    nombre: "Articulo 2",
-    resumen: "Este es el articulo 2",
-    texto: "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
-  },
-  {
-    id: 2,
-    nombre: "Articulo 3",
-    resumen: "Este es el articulo 3",
-    texto: "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
-  },
-];
 
 function Articulo() {
   // Obtener la  del usuario enviada mediante la URL
@@ -41,19 +22,34 @@ function Articulo() {
     });
   }, []);
 
+
   return articulo ? (
-    <div>
-      <h1>{articulo.nombre}</h1>
-      <p>{articulo.resumen}</p>
-      <hr />
-      <p>{articulo.texto}</p>
-    </div>
+    <>
+      <Navbar />
+      <Container>
+        <div className="pagina">
+          <h2>
+            {articulo.titulo}
+          </h2>
+          <br />
+          <div className="resumen">
+            <span>
+              {articulo.resumen}
+            </span>
+          </div>
+          <div className="texto">
+            <span>{articulo.texto}</span>
+          </div>
+        </div>
+      </Container>
+    </>
   ) : (
     <p>Error, no se pudo encontrar el articulo</p>
   );
 }
 
 const Container = styled.div`
+  margin-top: 60px;
   display: flex;
   justify-content: center; /* Separa los filtros y los resultados */
   align-items: flex-start; /* Alinea los elementos arriba */
@@ -72,6 +68,7 @@ const Container = styled.div`
     h2{
       text-align: center;
     }
+
   }
 
 `;
