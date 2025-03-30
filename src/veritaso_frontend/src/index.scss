@@ -39,3 +39,34 @@ button[type="submit"] {
 .browser-warning {
   display: none;
 }
+
+
+:root{
+  --cafe: #48341e;
+  --cafe_claro: #6c3f3f;
+  --piel: #d7b8a7;
+}
+
+html {
+    background-color: #ffffff; /* Color de fondo (tono piel claro) */
+  }
+
+input {
+  border-radius: 0%;
+}
+
+h1,
+h2,
+h3,
+p,
+a{
+  color: black;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration:underline
+}

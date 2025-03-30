@@ -16,20 +16,17 @@
       "type": "motoko"
     },
     "veritaso_frontend": {
-      "dependencies": [
-        "veritaso_backend"
-      ],
-      "source": [
-        "src/veritaso_frontend/dist"
-      ],
+      "dependencies": ["veritaso_backend"],
+      "source": ["src/veritaso_frontend/dist"],
       "type": "assets",
       "workspace": "veritaso_frontend"
     }
   },
+
   "defaults": {
     "build": {
       "args": "",
-      "packtool": ""
+      "packtool": "mops sources"
     }
   },
   "output_env_file": ".env",
