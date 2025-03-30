@@ -10,7 +10,7 @@ function ModificarArticulo() {
   const idArticulo = queryParams.get("id");
 
   const [articulo, setArticulo] = useState(null);
-  const [nombre, setNombre] = useState("");
+  const [titulo, setTitulo] = useState("");
   const [resumen, setResumen] = useState("");
   const [texto, setTexto] = useState("");
   const [loading, setLoading] = useState(true);
@@ -18,35 +18,47 @@ function ModificarArticulo() {
   // Obtener el articulo de la base de datos
   useEffect(() => {
     veritaso_backend.getArticulo(idArticulo).then((response) => {
-      setNombre(response.nombre);
-      setResumen(response.resumen);
-      setTexto(response.texto);
+      // Obtener el primer articulo
+      setArticulo(response[0]);
       setLoading(false);
     });
   }, []);
 
+  useEffect(() => {
+    if (articulo) {
+      setTitulo(articulo.titulo);
+      setResumen(articulo.resumen);
+      setTexto(articulo.texto);
+    }
+  }, [articulo]);
+
   const handleGuardar = () => {
-    const articuloModificado = {
-      ...articulo,
-      nombre,
-      resumen,
-      texto,
-    };
-    onGuardar(articuloModificado); // Llama a la función para manejar el guardado
+    veritaso_backend
+      .updateArticulo(
+        articulo.id,
+        titulo,
+        resumen,
+        texto,
+        articulo.fechaCreacion,
+      )
+      .then((resultado) => {
+        if (resultado) alert("El articulo se modifico correctamente");
+        else alert("Hubo un problema al modificar el articulo");
+      });
   };
 
   return (
-    loading && (
+    !loading && (
       <div className={styles.container}>
         <h2>Modificar Artículo</h2>
         <form className={styles.form}>
           <div className={styles.inputGroup}>
-            <label htmlFor="nombre">Nombre:</label>
+            <label htmlFor="titulo">Titulo:</label>
             <input
               type="text"
-              id="nombre"
-              value={nombre}
-              onChange={(e) => setNombre(e.target.value)}
+              id="titulo"
+              value={titulo}
+              onChange={(e) => setTitulo(e.target.value)}
             />
           </div>
           <div className={styles.inputGroup}>
