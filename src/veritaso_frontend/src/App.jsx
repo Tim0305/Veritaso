@@ -1,11 +1,10 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
-import Buscador from "./pages/Buscador/Buscador";
-import NavBar from "./components/NavBar/NavBar";
-import SearchResults from "./pages/SearchResults/SearchResults";
 import Articulo from "./pages/Articulo/Articulo";
-import NotFound from "./pages/NotFound/NotFound";
+import Buscador from "./pages/Buscador/Buscador";
 import ModificarArticulo from "./pages/ModificarArticulo/ModificarArticulo";
+import NotFound from "./pages/NotFound/NotFound";
+import SearchResults from "./pages/SearchResults/SearchResults";
 import CrearArticulo from "./pages/CrearArticulo/CrearArticulo";
 
 function App() {

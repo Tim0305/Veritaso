@@ -1,6 +1,9 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { veritaso_backend } from "declarations/veritaso_backend";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import styled from "styled-components";
+import Navbar from "../../components/NavBar/NavBar";
+
 import { veritaso_backend } from "declarations/veritaso_backend";
 import styled from "styled-components";
 
@@ -21,19 +24,34 @@ function Articulo() {
     });
   }, []);
 
+
   return articulo ? (
-    <Container>
-      <h1>{articulo.nombre}</h1>
-      <p>{articulo.resumen}</p>
-      <hr />
-      <p>{articulo.texto}</p>
-    </Container>
+    <>
+      <Navbar />
+      <Container>
+        <div className="pagina">
+          <h2>
+            {articulo.titulo}
+          </h2>
+          <br />
+          <div className="resumen">
+            <span>
+              {articulo.resumen}
+            </span>
+          </div>
+          <div className="texto">
+            <span>{articulo.texto}</span>
+          </div>
+        </div>
+      </Container>
+    </>
   ) : (
     <p>Error, no se pudo encontrar el articulo</p>
   );
 }
 
 const Container = styled.div`
+  margin-top: 60px;
   display: flex;
   justify-content: center; /* Separa los filtros y los resultados */
   align-items: flex-start; /* Alinea los elementos arriba */
@@ -52,6 +70,7 @@ const Container = styled.div`
     h2 {
       text-align: center;
     }
+
   }
 `;
 

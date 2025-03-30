@@ -1,8 +1,12 @@
 import { veritaso_backend } from "declarations/veritaso_backend";
+import { useEffect, useState } from "react";
+import { RiDeleteBinLine, RiEditLine } from "react-icons/ri";
+
 import { useLocation, useNavigate } from "react-router-dom";
 import NotFound from "../NotFound/NotFound";
 import styles from "./SearchResult.module.css";
-import { useEffect, useState } from "react";
+import Navbar from "../../components/NavBar/NavBar";
+
 
 function SearchResults() {
   // Obtener la busqueda del usuario enviada mediante la URL
@@ -45,34 +49,43 @@ function SearchResults() {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <span>{}</span>
-      <div className={styles.resultadosContainer}>
-        {articulosFiltrados.length === 0 ? (
-          <NotFound />
-        ) : (
-          <ul>
-            {articulosFiltrados.map((a) => (
-              <li key={a.id} className={styles.listItem}>
-                <a
-                  className={styles.tituloArticulo}
-                  onClick={() => handleClickArticulo(a.id)}
-                >
-                  <b>{a.titulo}</b>
-                </a>
-                <p className={styles.resumenArticulo}>{a.resumen}</p>
-                <button onClick={() => handleClickModificarArticulo(a.id)}>
-                  Modificar
-                </button>
-                <button onClick={() => handleDeleteArticulo(a.id)}>
-                  Eliminar
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
+    <>
+      <Navbar />
+      <div className={styles.container}>
+        <span>{ }</span>
+        <div className={styles.resultadosContainer}>
+          {articulosFiltrados.length === 0 ? (
+            <NotFound />
+          ) : (
+            <ul>
+              {articulosFiltrados.map((a) => (
+                <li key={a.id} className={styles.listItem}>
+                  <div className={styles.botones}>
+                    <button onClick={() => handleClickModificarArticulo(a.id)}>
+                      <RiEditLine size={40} />
+                    </button>
+                    <button onClick={() => handleDeleteArticulo(a.id)}>
+                      <div className="delete-icon">
+                        <RiDeleteBinLine size={40} />
+                      </div>
+                    </button>
+                  </div>
+                  <a
+                    className={styles.tituloArticulo}
+                    onClick={() => handleClickArticulo(a.id)}
+                  >
+                    <b>{a.titulo}</b>
+                  </a>
+                  <p className={styles.resumenArticulo}>{a.resumen}</p>
+                </li>
+              ))}
+            </ul>
+
+          )}
+        </div>
       </div>
-    </div>
+
+    </>
   );
 }
 
