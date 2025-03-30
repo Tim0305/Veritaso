@@ -1,4 +1,4 @@
-import React from 'react'
+import styled from "styled-components"
 
 
 export const SearchBar = () => {
@@ -12,4 +12,6 @@ export const SearchBar = () => {
     )
 }
 
-const 
+const Container = styled.div`
+
+`;

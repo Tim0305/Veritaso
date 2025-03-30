@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import { veritaso_backend } from 'declarations/veritaso_backend';
+import { Route, Router, Routes } from 'react-router-dom';
+import Inicio from './pages/Inicio/Inicio';
 
 function App() {
   return (
+
     <Router>
       <Routes>
         <Route path="/" element={<Inicio />} />
