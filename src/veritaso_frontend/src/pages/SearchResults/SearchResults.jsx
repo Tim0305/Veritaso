@@ -1,12 +1,10 @@
 import { veritaso_backend } from "declarations/veritaso_backend";
 import { useEffect, useState } from "react";
 import { RiDeleteBinLine, RiEditLine } from "react-icons/ri";
-
 import { useLocation, useNavigate } from "react-router-dom";
 import NotFound from "../NotFound/NotFound";
 import styles from "./SearchResult.module.css";
 import Navbar from "../../components/NavBar/NavBar";
-
 
 function SearchResults() {
   // Obtener la busqueda del usuario enviada mediante la URL
@@ -52,7 +50,7 @@ function SearchResults() {
     <>
       <Navbar />
       <div className={styles.container}>
-        <span>{ }</span>
+        <span>{}</span>
         <div className={styles.resultadosContainer}>
           {articulosFiltrados.length === 0 ? (
             <NotFound />
@@ -80,11 +78,9 @@ function SearchResults() {
                 </li>
               ))}
             </ul>
-
           )}
         </div>
       </div>
-
     </>
   );
 }

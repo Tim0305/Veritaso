@@ -13,7 +13,6 @@ function App() {
     <>
       <div>
         <Router>
-          <Navbar />
           <Routes>
             <Route path="/" element={<Buscador />} />
             <Route path="/resultados" element={<SearchResults />} />

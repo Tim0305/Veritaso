@@ -95,6 +95,10 @@ function Navbar() {
     }
   };
 
+  const handleCrearArticulo = () => {
+    navigate("/crearArticulo");
+  };
+
   return (
     <NavbarContainer>
       <div></div> {/* Espacio vacío para centrar el input */}
@@ -111,6 +115,7 @@ function Navbar() {
         </SearchIcon>
       </SearchContainer>
       <LoginButton onClick={() => navigate("/login")}>Login</LoginButton>
+      <button onClick={handleCrearArticulo}>Crear Articulo</button>
     </NavbarContainer>
   );
 }
