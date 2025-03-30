@@ -12,8 +12,8 @@ function CrearArticulo() {
     veritaso_backend
       .createArticulo(titulo, resumen, texto, fechaCreacion)
       .then((resultado) => {
-        if (resultado) alert("El articulo se modifico correctamente");
-        else alert("Hubo un problema al modificar el articulo");
+        if (resultado) alert("El artículo se creó correctamente");
+        else alert("Hubo un problema al crear el artículo");
       });
   };
 
