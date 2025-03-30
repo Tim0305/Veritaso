@@ -3,6 +3,7 @@ import Text "mo:base/Text";
 import Nat "mo:base/Nat";
 import Debug "mo:base/Debug";
 import Array "mo:base/Array";
+import Principal "mo:base/Principal";
 import Types "Types";
 
 actor {
@@ -85,16 +86,21 @@ actor {
 
   // 9. Eliminar un artículo
   public func deleteArticulo(key: Text): async Bool {
-  switch (articulos.get(key)) {
-    case null {
-      Debug.print("No se encontró el artículo con ID: " # key);
-      return false;
-    };
-    case (?_) {
-      ignore articulos.remove(key);
-      Debug.print("Artículo eliminado con ID: " # key);
-      return true;
+    switch (articulos.get(key)) {
+      case null {
+        Debug.print("No se encontró el artículo con ID: " # key);
+        return false;
+      };
+      case (?_) {
+        ignore articulos.remove(key);
+        Debug.print("Artículo eliminado con ID: " # key);
+        return true;
+      };
     };
   };
-};
+
+  public query (message) func greet() : async Text {
+    return "Hello, " # Principal.toText(message.caller) # "!";
+  };
+
 };
