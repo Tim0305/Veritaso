@@ -4,7 +4,6 @@ import Nat "mo:base/Nat";
 import Debug "mo:base/Debug";
 import Iter "mo:base/Iter";
 import Types "Types";
-import DateTime "mo:datetime/DateTime";
 
 actor {
   // 2. Variable estable para generar IDs únicos

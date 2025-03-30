@@ -1,9 +1,9 @@
-import { Route, Router, Routes } from 'react-router-dom';
-import Inicio from './pages/Inicio/Inicio';
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Inicio from "./pages/Inicio/Inicio";
 
 function App() {
   return (
-
     <Router>
       <Routes>
         <Route path="/" element={<Inicio />} />
@@ -12,4 +12,5 @@ function App() {
     </Router>
   );
 }
+
 export default App;
